@@ -1,6 +1,7 @@
 package js.pekah.study.controller;
 
 import js.pekah.study.model.SearchParam;
+import js.pekah.study.model.network.Header;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,5 +33,12 @@ public class GetController {
 
         // {"account: "", "email": "", "page": 0 }
         return searchParam;
+    }
+
+    @GetMapping("/header")
+
+    // {"resultCode: "OK", "description: "OK"}
+    public Header getHeader() {
+        return Header.builder().resultCode("OK").description("OK").build();
     }
 }
