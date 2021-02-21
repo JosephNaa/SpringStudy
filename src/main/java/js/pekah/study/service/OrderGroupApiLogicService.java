@@ -5,12 +5,15 @@ import js.pekah.study.model.entity.OrderGroup;
 import js.pekah.study.model.network.Header;
 import js.pekah.study.model.network.request.OrderGroupApiRequest;
 import js.pekah.study.model.network.response.OrderGroupApiResponse;
+import js.pekah.study.model.network.response.UserApiResponse;
 import js.pekah.study.repository.OrderGroupRepository;
 import js.pekah.study.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest, OrderGroupApiResponse, OrderGroup> {
@@ -37,7 +40,7 @@ public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest,
 
         OrderGroup newOrderGroup = baseRepository.save(orderGroup);
 
-        return response(newOrderGroup);
+        return Header.OK(response(newOrderGroup));
     }
 
     @Override
@@ -45,6 +48,7 @@ public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest,
 
         return baseRepository.findById(id)
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
@@ -73,6 +77,7 @@ public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest,
                 })
                 .map(changeOrderGroup -> baseRepository.save(changeOrderGroup))
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(()->Header.ERROR("no data"));
 
     }
@@ -88,9 +93,9 @@ public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest,
                 .orElseGet(() -> Header.ERROR("no data"));
     }
 
-    private Header<OrderGroupApiResponse> response(OrderGroup orderGroup) {
+    public OrderGroupApiResponse response(OrderGroup orderGroup) {
 
-        OrderGroupApiResponse body = OrderGroupApiResponse.builder()
+        OrderGroupApiResponse orderGroupApiResponse = OrderGroupApiResponse.builder()
                 .id(orderGroup.getId())
                 .status(orderGroup.getStatus())
                 .orderType(orderGroup.getOrderType())
@@ -104,6 +109,11 @@ public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest,
                 .userId(orderGroup.getUser().getId())
                 .build();
 
-        return Header.OK(body);
+        return orderGroupApiResponse;
+    }
+
+    @Override
+    public Header<List<OrderGroupApiResponse>> search(Pageable pageable) {
+        return null;
     }
 }

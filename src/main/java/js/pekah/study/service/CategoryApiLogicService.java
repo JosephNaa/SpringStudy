@@ -5,9 +5,13 @@ import js.pekah.study.model.entity.Category;
 import js.pekah.study.model.network.Header;
 import js.pekah.study.model.network.request.CategoryApiRequest;
 import js.pekah.study.model.network.response.CategoryApiResponse;
+import js.pekah.study.model.network.response.UserApiResponse;
 import js.pekah.study.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CategoryApiLogicService extends BaseService<CategoryApiRequest, CategoryApiResponse, Category> {
@@ -24,13 +28,14 @@ public class CategoryApiLogicService extends BaseService<CategoryApiRequest, Cat
 
         Category newCategory = baseRepository.save(category);
 
-        return response(newCategory);
+        return Header.OK(response(newCategory));
     }
 
     @Override
     public Header<CategoryApiResponse> read(Long id) {
         return baseRepository.findById(id)
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
@@ -50,6 +55,7 @@ public class CategoryApiLogicService extends BaseService<CategoryApiRequest, Cat
                 })
                 .map(changeCategory -> baseRepository.save(changeCategory))
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
@@ -63,14 +69,19 @@ public class CategoryApiLogicService extends BaseService<CategoryApiRequest, Cat
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
-    private Header<CategoryApiResponse> response(Category category){
+    private CategoryApiResponse response(Category category){
 
-        CategoryApiResponse body = CategoryApiResponse.builder()
+        CategoryApiResponse categoryApiResponse = CategoryApiResponse.builder()
                 .id(category.getId())
                 .type(category.getType())
                 .title(category.getTitle())
                 .build();
 
-        return Header.OK(body);
+        return categoryApiResponse;
+    }
+
+    @Override
+    public Header<List<CategoryApiResponse>> search(Pageable pageable) {
+        return null;
     }
 }

@@ -5,12 +5,15 @@ import js.pekah.study.model.entity.Item;
 import js.pekah.study.model.network.Header;
 import js.pekah.study.model.network.request.ItemApiRequest;
 import js.pekah.study.model.network.response.ItemApiResponse;
+import js.pekah.study.model.network.response.UserApiResponse;
 import js.pekah.study.repository.ItemRepository;
 import js.pekah.study.repository.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ItemApiLogicService extends BaseService<ItemApiRequest, ItemApiResponse, Item> {
@@ -82,7 +85,7 @@ public class ItemApiLogicService extends BaseService<ItemApiRequest, ItemApiResp
             .orElseGet(() -> Header.ERROR("no delete data"));
     }
 
-    private Header<ItemApiResponse> response(Item item) {
+    public Header<ItemApiResponse> response(Item item) {
 
         ItemApiResponse body = ItemApiResponse.builder()
                 .id(item.getId())
@@ -98,5 +101,10 @@ public class ItemApiLogicService extends BaseService<ItemApiRequest, ItemApiResp
                 .build();
 
         return Header.OK(body);
+    }
+
+    @Override
+    public Header<List<ItemApiResponse>> search(Pageable pageable) {
+        return null;
     }
 }

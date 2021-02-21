@@ -5,11 +5,14 @@ import js.pekah.study.model.entity.AdminUser;
 import js.pekah.study.model.network.Header;
 import js.pekah.study.model.network.request.AdminUserApiRequest;
 import js.pekah.study.model.network.response.AdminUserApiResponse;
+import js.pekah.study.model.network.response.UserApiResponse;
 import js.pekah.study.repository.AdminUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class AdminUserApiLogicService extends BaseService<AdminUserApiRequest, AdminUserApiResponse, AdminUser> {
@@ -29,13 +32,14 @@ public class AdminUserApiLogicService extends BaseService<AdminUserApiRequest, A
 
         AdminUser newAdminUser = baseRepository.save(adminUser);
 
-        return response(newAdminUser);
+        return Header.OK(response(newAdminUser));
     }
 
     @Override
     public Header<AdminUserApiResponse> read(Long id) {
         return baseRepository.findById(id)
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
@@ -62,6 +66,7 @@ public class AdminUserApiLogicService extends BaseService<AdminUserApiRequest, A
                 })
                 .map(changeAdminUser -> baseRepository.save(changeAdminUser))
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
@@ -75,9 +80,9 @@ public class AdminUserApiLogicService extends BaseService<AdminUserApiRequest, A
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
-    private Header<AdminUserApiResponse> response(AdminUser adminUser) {
+    private AdminUserApiResponse response(AdminUser adminUser) {
 
-        AdminUserApiResponse body = AdminUserApiResponse.builder()
+        AdminUserApiResponse adminUserApiResponse = AdminUserApiResponse.builder()
                 .id(adminUser.getId())
                 .account(adminUser.getAccount())
                 .password(adminUser.getPassword())
@@ -90,6 +95,11 @@ public class AdminUserApiLogicService extends BaseService<AdminUserApiRequest, A
                 .unregisteredAt(adminUser.getUnregisteredAt())
                 .build();
 
-        return Header.OK(body);
+        return adminUserApiResponse;
+    }
+
+    @Override
+    public Header<List<AdminUserApiResponse>> search(Pageable pageable) {
+        return null;
     }
 }

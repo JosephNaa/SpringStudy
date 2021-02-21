@@ -5,10 +5,14 @@ import js.pekah.study.model.entity.Partner;
 import js.pekah.study.model.network.Header;
 import js.pekah.study.model.network.request.PartnerApiRequest;
 import js.pekah.study.model.network.response.PartnerApiResponse;
+import js.pekah.study.model.network.response.UserApiResponse;
 import js.pekah.study.repository.CategoryRepository;
 import js.pekah.study.repository.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PartnerApiLogicService extends BaseService<PartnerApiRequest, PartnerApiResponse, Partner> {
@@ -36,13 +40,14 @@ public class PartnerApiLogicService extends BaseService<PartnerApiRequest, Partn
 
         Partner newPartner = baseRepository.save(partner);
 
-        return response(newPartner);
+        return Header.OK(response(newPartner));
     }
 
     @Override
     public Header<PartnerApiResponse> read(Long id) {
         return baseRepository.findById(id)
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
@@ -70,6 +75,7 @@ public class PartnerApiLogicService extends BaseService<PartnerApiRequest, Partn
                 })
                 .map(changePartner -> baseRepository.save(changePartner))
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
@@ -83,9 +89,9 @@ public class PartnerApiLogicService extends BaseService<PartnerApiRequest, Partn
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
-    private Header<PartnerApiResponse> response(Partner partner) {
+    private PartnerApiResponse response(Partner partner) {
 
-        PartnerApiResponse body = PartnerApiResponse.builder()
+        PartnerApiResponse partnerApiResponse = PartnerApiResponse.builder()
                 .id(partner.getId())
                 .name(partner.getName())
                 .status(partner.getStatus())
@@ -99,6 +105,11 @@ public class PartnerApiLogicService extends BaseService<PartnerApiRequest, Partn
                 .categoryId(partner.getCategory().getId())
                 .build();
 
-        return Header.OK(body);
+        return partnerApiResponse;
+    }
+
+    @Override
+    public Header<List<PartnerApiResponse>> search(Pageable pageable) {
+        return null;
     }
 }

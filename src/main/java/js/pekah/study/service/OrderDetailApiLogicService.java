@@ -5,13 +5,16 @@ import js.pekah.study.model.entity.OrderDetail;
 import js.pekah.study.model.network.Header;
 import js.pekah.study.model.network.request.OrderDetailApiRequest;
 import js.pekah.study.model.network.response.OrderDetailApiResponse;
+import js.pekah.study.model.network.response.UserApiResponse;
 import js.pekah.study.repository.ItemRepository;
 import js.pekah.study.repository.OrderDetailRepository;
 import js.pekah.study.repository.OrderGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class OrderDetailApiLogicService extends BaseService<OrderDetailApiRequest, OrderDetailApiResponse, OrderDetail> {
@@ -38,13 +41,14 @@ public class OrderDetailApiLogicService extends BaseService<OrderDetailApiReques
 
         OrderDetail newOrderDetail = baseRepository.save(orderDetail);
 
-        return response(newOrderDetail);
+        return Header.OK(response(newOrderDetail));
     }
 
     @Override
     public Header<OrderDetailApiResponse> read(Long id) {
         return baseRepository.findById(id)
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
@@ -68,6 +72,7 @@ public class OrderDetailApiLogicService extends BaseService<OrderDetailApiReques
                 })
                 .map(changeOrderDetail -> baseRepository.save(changeOrderDetail))
                 .map(this::response)
+                .map(Header::OK)
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
@@ -81,9 +86,9 @@ public class OrderDetailApiLogicService extends BaseService<OrderDetailApiReques
                 .orElseGet(()->Header.ERROR("no data"));
     }
 
-    private Header<OrderDetailApiResponse> response(OrderDetail orderDetail) {
+    private OrderDetailApiResponse response(OrderDetail orderDetail) {
 
-        OrderDetailApiResponse body = OrderDetailApiResponse.builder()
+        OrderDetailApiResponse orderDetailApiResponse = OrderDetailApiResponse.builder()
                 .id(orderDetail.getId())
                 .status(orderDetail.getStatus())
                 .arrivalDate(orderDetail.getArrivalDate())
@@ -93,6 +98,11 @@ public class OrderDetailApiLogicService extends BaseService<OrderDetailApiReques
                 .itemId(orderDetail.getItem().getId())
                 .build();
 
-        return Header.OK(body);
+        return orderDetailApiResponse;
+    }
+
+    @Override
+    public Header<List<OrderDetailApiResponse>> search(Pageable pageable) {
+        return null;
     }
 }
