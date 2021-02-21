@@ -1,7 +1,7 @@
-package js.pekah.study.controller;
+package js.pekah.backend.controller;
 
-import js.pekah.study.model.SearchParam;
-import js.pekah.study.model.network.Header;
+import js.pekah.backend.model.SearchParam;
+import js.pekah.backend.model.network.Header;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

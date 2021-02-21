@@ -1,18 +1,16 @@
-package js.pekah.study.service;
+package js.pekah.backend.service;
 
-import js.pekah.study.ifs.CrudInterface;
-import js.pekah.study.model.entity.Item;
-import js.pekah.study.model.entity.User;
-import js.pekah.study.model.network.Header;
-import js.pekah.study.model.network.request.ItemApiRequest;
-import js.pekah.study.model.network.response.ItemApiResponse;
-import js.pekah.study.repository.ItemRepository;
-import js.pekah.study.repository.PartnerRepository;
+import js.pekah.backend.ifs.CrudInterface;
+import js.pekah.backend.model.entity.Item;
+import js.pekah.backend.model.network.Header;
+import js.pekah.backend.model.network.request.ItemApiRequest;
+import js.pekah.backend.model.network.response.ItemApiResponse;
+import js.pekah.backend.repository.ItemRepository;
+import js.pekah.backend.repository.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemApiResponse> {

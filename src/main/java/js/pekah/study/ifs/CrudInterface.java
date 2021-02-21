@@ -1,6 +1,6 @@
-package js.pekah.study.ifs;
+package js.pekah.backend.ifs;
 
-import js.pekah.study.model.network.Header;
+import js.pekah.backend.model.network.Header;
 
 public interface CrudInterface<Req, Res> {
 

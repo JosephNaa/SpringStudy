@@ -1,4 +1,4 @@
-package js.pekah.study.model.network.response;
+package js.pekah.backend.model.network.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

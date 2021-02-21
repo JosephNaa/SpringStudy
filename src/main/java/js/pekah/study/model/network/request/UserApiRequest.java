@@ -1,4 +1,4 @@
-package js.pekah.study.model.network.request;
+package js.pekah.backend.model.network.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

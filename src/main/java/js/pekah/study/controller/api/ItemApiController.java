@@ -1,11 +1,11 @@
-package js.pekah.study.controller.api;
+package js.pekah.backend.controller.api;
 
 
-import js.pekah.study.ifs.CrudInterface;
-import js.pekah.study.model.network.Header;
-import js.pekah.study.model.network.request.ItemApiRequest;
-import js.pekah.study.model.network.response.ItemApiResponse;
-import js.pekah.study.service.ItemApiLogicService;
+import js.pekah.backend.ifs.CrudInterface;
+import js.pekah.backend.model.network.Header;
+import js.pekah.backend.model.network.request.ItemApiRequest;
+import js.pekah.backend.model.network.response.ItemApiResponse;
+import js.pekah.backend.service.ItemApiLogicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

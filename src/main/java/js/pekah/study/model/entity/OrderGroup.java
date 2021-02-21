@@ -1,4 +1,4 @@
-package js.pekah.study.model.entity;
+package js.pekah.backend.model.entity;
 
 import lombok.*;
 import lombok.experimental.Accessors;

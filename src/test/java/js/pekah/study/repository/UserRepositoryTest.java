@@ -1,19 +1,13 @@
-package js.pekah.study.repository;
+package js.pekah.backend.repository;
 
-import js.pekah.study.model.entity.Item;
-import js.pekah.study.model.entity.User;
+import js.pekah.backend.model.entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest

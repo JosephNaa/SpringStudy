@@ -1,8 +1,7 @@
-package js.pekah.study.repository;
+package js.pekah.backend.repository;
 
-import js.pekah.study.model.entity.OrderDetail;
+import js.pekah.backend.model.entity.OrderDetail;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,6 +1,5 @@
-package js.pekah.study.model.network;
+package js.pekah.backend.model.network;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

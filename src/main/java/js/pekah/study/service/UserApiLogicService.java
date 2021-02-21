@@ -1,11 +1,11 @@
-package js.pekah.study.service;
+package js.pekah.backend.service;
 
-import js.pekah.study.ifs.CrudInterface;
-import js.pekah.study.model.entity.User;
-import js.pekah.study.model.network.Header;
-import js.pekah.study.model.network.request.UserApiRequest;
-import js.pekah.study.model.network.response.UserApiResponse;
-import js.pekah.study.repository.UserRepository;
+import js.pekah.backend.ifs.CrudInterface;
+import js.pekah.backend.model.entity.User;
+import js.pekah.backend.model.network.Header;
+import js.pekah.backend.model.network.request.UserApiRequest;
+import js.pekah.backend.model.network.response.UserApiResponse;
+import js.pekah.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

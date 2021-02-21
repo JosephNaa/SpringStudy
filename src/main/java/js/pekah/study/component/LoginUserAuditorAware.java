@@ -1,4 +1,4 @@
-package js.pekah.study.component;
+package js.pekah.backend.component;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
-package js.pekah.study.repository;
+package js.pekah.backend.repository;
 
-import js.pekah.study.model.entity.Category;
+import js.pekah.backend.model.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

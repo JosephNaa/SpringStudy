@@ -1,4 +1,4 @@
-package js.pekah.study;
+package js.pekah.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
