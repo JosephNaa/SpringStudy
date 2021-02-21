@@ -1,5 +1,6 @@
-package js.pekah.backend.model.network.response;
+package js.pekah.study.model.network.response;
 
+import js.pekah.study.model.enumClass.ItemStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class ItemApiResponse {
 
     private Long id;
 
-    private String status;
+    private ItemStatus status;
 
     private String name;
 

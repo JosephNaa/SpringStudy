@@ -1,5 +1,6 @@
 package js.pekah.study.model.network.request;
 
+import js.pekah.study.model.enumClass.PartnerStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +18,7 @@ public class PartnerApiRequest {
 
     private String name;
 
-    private String status;
+    private PartnerStatus status;
 
     private String address;
 

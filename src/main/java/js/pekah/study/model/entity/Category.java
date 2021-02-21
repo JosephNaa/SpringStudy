@@ -1,5 +1,6 @@
-package js.pekah.backend.model.entity;
+package js.pekah.study.model.entity;
 
+import js.pekah.study.model.enumClass.CategoryType;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
@@ -26,7 +27,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private CategoryType type;
 
     private String title;
 

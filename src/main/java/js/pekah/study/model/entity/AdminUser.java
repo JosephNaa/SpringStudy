@@ -1,4 +1,4 @@
-package js.pekah.backend.model.entity;
+package js.pekah.study.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +31,7 @@ public class AdminUser {
 
     private String password;
 
+    @Enumerated(EnumType.STRING)
     private String status;
 
     private String role;

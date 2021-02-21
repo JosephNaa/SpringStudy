@@ -1,5 +1,6 @@
-package js.pekah.backend.model.network.request;
+package js.pekah.study.model.network.request;
 
+import js.pekah.study.model.enumClass.UserStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class UserApiRequest {
 
     private String password;
 
-    private String status;
+    private UserStatus status;
 
     private String email;
 

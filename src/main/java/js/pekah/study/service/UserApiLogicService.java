@@ -1,11 +1,12 @@
-package js.pekah.backend.service;
+package js.pekah.study.service;
 
-import js.pekah.backend.ifs.CrudInterface;
-import js.pekah.backend.model.entity.User;
-import js.pekah.backend.model.network.Header;
-import js.pekah.backend.model.network.request.UserApiRequest;
-import js.pekah.backend.model.network.response.UserApiResponse;
-import js.pekah.backend.repository.UserRepository;
+import js.pekah.study.ifs.CrudInterface;
+import js.pekah.study.model.entity.User;
+import js.pekah.study.model.enumClass.UserStatus;
+import js.pekah.study.model.network.Header;
+import js.pekah.study.model.network.request.UserApiRequest;
+import js.pekah.study.model.network.response.UserApiResponse;
+import js.pekah.study.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
         User user = User.builder()
                 .account(userApiRequest.getAccount())
                 .password(userApiRequest.getPassword())
-                .status("REGISTERED")
+                .status(UserStatus.REGISTERED)
                 .phoneNumber(userApiRequest.getPhoneNumber())
                 .email(userApiRequest.getEmail())
                 .registeredAt(LocalDateTime.now())

@@ -1,5 +1,6 @@
-package js.pekah.backend.model.network.request;
+package js.pekah.study.model.network.request;
 
+import js.pekah.study.model.enumClass.OrderType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class OrderGroupApiRequest {
 
     private String status;
 
-    private String orderType;
+    private OrderType orderType;
 
     private String revAddress;
 

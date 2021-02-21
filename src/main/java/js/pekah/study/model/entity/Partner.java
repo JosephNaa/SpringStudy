@@ -1,5 +1,6 @@
-package js.pekah.backend.model.entity;
+package js.pekah.study.model.entity;
 
+import js.pekah.study.model.enumClass.PartnerStatus;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
@@ -28,7 +29,8 @@ public class Partner {
 
     private String name;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private PartnerStatus status;
 
     private String address;
 

@@ -1,5 +1,6 @@
 package js.pekah.study.model.network.request;
 
+import js.pekah.study.model.enumClass.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class OrderDetailApiRequest {
 
     private Long id;
 
-    private String status;
+    private OrderStatus status;
 
     private LocalDateTime arrivalDate;
 
