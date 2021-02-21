@@ -1,6 +1,6 @@
-package js.pekah.backend.repository;
+package js.pekah.study.repository;
 
-import js.pekah.backend.model.entity.AdminUser;
+import js.pekah.study.model.entity.AdminUser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class AdminUserRepositoryTest {
         AdminUser adminUser = new AdminUser();
         adminUser.setAccount("AdminUser02");
         adminUser.setPassword("AdminUser02");
-        adminUser.setStatus("REGISTERED");
+//        adminUser.setStatus("REGISTERED");
         adminUser.setRole("PARTNER");
 //        adminUser.setCreatedAt(LocalDateTime.now());
 //        adminUser.setCreatedBy("AdminServer");

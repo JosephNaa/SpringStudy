@@ -1,6 +1,7 @@
-package js.pekah.backend.repository;
+package js.pekah.study.repository;
 
-import js.pekah.backend.model.entity.User;
+import js.pekah.study.model.entity.User;
+import js.pekah.study.model.enumClass.UserStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class UserRepositoryTest {
 
         String account = "Test03";
         String password = "Test03";
-        String status = "REGISTERED";
+        UserStatus status = UserStatus.REGISTERED;
         String email = "Test01@gmail.com";
         String phoneNumber = "010-1111-3333";
         LocalDateTime registeredAt = LocalDateTime.now();
@@ -59,8 +60,8 @@ public class UserRepositoryTest {
 
         user
                 .setEmail("")
-                .setPhoneNumber("")
-                .setStatus("");
+                .setPhoneNumber("");
+//                .setStatus();
 
         User u = new User().setAccount("").setEmail("").setPassword("");
 

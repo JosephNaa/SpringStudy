@@ -1,6 +1,6 @@
-package js.pekah.backend.repository;
+package js.pekah.study.repository;
 
-import js.pekah.backend.model.entity.Partner;
+import js.pekah.study.model.entity.Partner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

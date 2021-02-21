@@ -1,6 +1,6 @@
-package js.pekah.backend.repository;
+package js.pekah.study.repository;
 
-import js.pekah.backend.model.entity.OrderGroup;
+import js.pekah.study.model.entity.OrderGroup;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class OrderGroupRepositoryTest {
 
         OrderGroup orderGroup = new OrderGroup();
         orderGroup.setStatus("COMPLETE");
-        orderGroup.setOrderType("CARD");
+//        orderGroup.setOrderType("CARD");
         orderGroup.setRevAddress("서울시 강남구");
         orderGroup.setRevName("홍길동");
         orderGroup.setPaymentType("CARD");
