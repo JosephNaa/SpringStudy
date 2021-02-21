@@ -2,6 +2,7 @@ package js.pekah.study.controller.api;
 
 import js.pekah.study.controller.CrudController;
 import js.pekah.study.ifs.CrudInterface;
+import js.pekah.study.model.entity.User;
 import js.pekah.study.model.network.Header;
 import js.pekah.study.model.network.request.UserApiRequest;
 import js.pekah.study.model.network.response.UserApiResponse;
@@ -15,13 +16,7 @@ import javax.annotation.PostConstruct;
 @Slf4j
 @RestController
 @RequestMapping("/api/user")
-public class UserApiController extends CrudController<UserApiRequest, UserApiResponse> {
+public class UserApiController extends CrudController<UserApiRequest, UserApiResponse, User> {
 
-    @Autowired
-    private UserApiLogicService userApiLogicService;
 
-    @PostConstruct
-    public void init() {
-        this.baseService = userApiLogicService;
-    }
 }

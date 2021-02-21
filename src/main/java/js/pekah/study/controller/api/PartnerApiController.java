@@ -2,6 +2,7 @@ package js.pekah.study.controller.api;
 
 import js.pekah.study.controller.CrudController;
 import js.pekah.study.ifs.CrudInterface;
+import js.pekah.study.model.entity.Partner;
 import js.pekah.study.model.network.Header;
 import js.pekah.study.model.network.request.PartnerApiRequest;
 import js.pekah.study.model.network.response.PartnerApiResponse;
@@ -13,14 +14,7 @@ import javax.annotation.PostConstruct;
 
 @RestController
 @RequestMapping("/api/partner")
-public class PartnerApiController extends CrudController<PartnerApiRequest, PartnerApiResponse> {
+public class PartnerApiController extends CrudController<PartnerApiRequest, PartnerApiResponse, Partner> {
 
-    @Autowired
-    private PartnerApiLogicService partnerApiLogicService;
-
-    @PostConstruct
-    public void init() {
-        this.baseService = partnerApiLogicService;
-    }
 
 }

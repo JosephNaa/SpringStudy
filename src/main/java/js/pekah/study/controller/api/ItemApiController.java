@@ -3,6 +3,7 @@ package js.pekah.study.controller.api;
 
 import js.pekah.study.controller.CrudController;
 import js.pekah.study.ifs.CrudInterface;
+import js.pekah.study.model.entity.Item;
 import js.pekah.study.model.network.Header;
 import js.pekah.study.model.network.request.ItemApiRequest;
 import js.pekah.study.model.network.response.ItemApiResponse;
@@ -16,14 +17,6 @@ import javax.annotation.PostConstruct;
 @Slf4j
 @RestController
 @RequestMapping("/api/item")
-public class ItemApiController extends CrudController<ItemApiRequest, ItemApiResponse> {
-
-    @Autowired
-    private ItemApiLogicService itemApiLogicService;
-
-    @PostConstruct
-    public void init() {
-        this.baseService = itemApiLogicService;
-    }
+public class ItemApiController extends CrudController<ItemApiRequest, ItemApiResponse, Item> {
 
 }

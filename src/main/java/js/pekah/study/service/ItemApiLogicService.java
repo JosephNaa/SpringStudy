@@ -1,25 +1,22 @@
-package js.pekah.backend.service;
+package js.pekah.study.service;
 
-import js.pekah.backend.ifs.CrudInterface;
-import js.pekah.backend.model.entity.Item;
-import js.pekah.backend.model.network.Header;
-import js.pekah.backend.model.network.request.ItemApiRequest;
-import js.pekah.backend.model.network.response.ItemApiResponse;
-import js.pekah.backend.repository.ItemRepository;
-import js.pekah.backend.repository.PartnerRepository;
+import js.pekah.study.ifs.CrudInterface;
+import js.pekah.study.model.entity.Item;
+import js.pekah.study.model.network.Header;
+import js.pekah.study.model.network.request.ItemApiRequest;
+import js.pekah.study.model.network.response.ItemApiResponse;
+import js.pekah.study.repository.ItemRepository;
+import js.pekah.study.repository.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
-public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemApiResponse> {
+public class ItemApiLogicService extends BaseService<ItemApiRequest, ItemApiResponse, Item> {
 
     @Autowired
     private PartnerRepository partnerRepository;
-
-    @Autowired
-    private ItemRepository itemRepository;
 
     @Override
     public Header<ItemApiResponse> create(Header<ItemApiRequest> request) {
@@ -37,7 +34,7 @@ public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemAp
                 .partner(partnerRepository.getOne(body.getPartnerId()))
                 .build();
 
-        Item newItem = itemRepository.save(item);
+        Item newItem = baseRepository.save(item);
 
         return response(newItem);
     }
@@ -45,7 +42,7 @@ public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemAp
     @Override
     public Header<ItemApiResponse> read(Long id) {
 
-        return itemRepository.findById(id)
+        return baseRepository.findById(id)
                 .map(item -> response(item))
                 .orElseGet(() -> Header.ERROR("no data"));
     }
@@ -55,7 +52,7 @@ public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemAp
 
         ItemApiRequest body = request.getData();
 
-        return itemRepository.findById(body.getId())
+        return baseRepository.findById(body.getId())
                 .map(entityItem -> {
                     entityItem
                             .setStatus(body.getStatus())
@@ -69,7 +66,7 @@ public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemAp
                             ;
                     return entityItem;
                 })
-                .map(newEntityItem -> itemRepository.save(newEntityItem))
+                .map(newEntityItem -> baseRepository.save(newEntityItem))
                 .map(item -> response(item))
                 .orElseGet(() -> Header.ERROR("no data"));
     }
@@ -77,9 +74,9 @@ public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemAp
     @Override
     public Header delete(Long id) {
 
-        return itemRepository.findById(id)
+        return baseRepository.findById(id)
             .map(item -> {
-                itemRepository.delete(item);
+                baseRepository.delete(item);
                 return Header.OK();
             })
             .orElseGet(() -> Header.ERROR("no delete data"));
