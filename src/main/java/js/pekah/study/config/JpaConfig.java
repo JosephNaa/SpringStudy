@@ -1,4 +1,4 @@
-package js.pekah.backend.config;
+package js.pekah.study.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

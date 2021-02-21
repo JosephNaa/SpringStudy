@@ -1,4 +1,4 @@
-package js.pekah.backend.model;
+package js.pekah.study.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
