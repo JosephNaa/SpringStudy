@@ -27,8 +27,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private CategoryType type;
+//    @Enumerated(EnumType.STRING)
+    private String type;
 
     private String title;
 

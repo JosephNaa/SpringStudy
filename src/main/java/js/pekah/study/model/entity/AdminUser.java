@@ -1,5 +1,6 @@
 package js.pekah.study.model.entity;
 
+import js.pekah.study.model.enumClass.UserStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,7 +33,7 @@ public class AdminUser {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private String status;
+    private UserStatus status;
 
     private String role;
 

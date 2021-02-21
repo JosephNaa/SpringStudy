@@ -14,7 +14,7 @@ public class CategoryApiRequest {
 
     private Long id;
 
-    private CategoryType type;
+    private String type;
 
     private String title;
 

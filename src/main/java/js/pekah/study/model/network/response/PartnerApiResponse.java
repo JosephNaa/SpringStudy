@@ -18,7 +18,7 @@ public class PartnerApiResponse {
 
     private String name;
 
-    private PartnerStatus status;
+    private String status;
 
     private String address;
 

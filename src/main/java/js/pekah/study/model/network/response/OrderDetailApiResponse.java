@@ -17,7 +17,7 @@ public class OrderDetailApiResponse {
 
     private Long id;
 
-    private OrderStatus status;
+    private String status;
 
     private LocalDateTime arrivalDate;
 
